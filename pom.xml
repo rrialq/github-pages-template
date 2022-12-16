@@ -111,7 +111,7 @@
 
                 <executions>
                     <execution>
-                        <id>wsdlit-initialize-versionList</id>
+                        <id>initialize-versionList</id>
                         <goals>
                             <goal>list</goal>
                         </goals>
@@ -133,7 +133,7 @@
                 <artifactId>gmavenplus-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>wsdlit-generate-file_versions.js</id>
+                        <id>generate-file_versions.js</id>
                         <goals>
                             <goal>execute</goal>
                         </goals>
@@ -169,7 +169,7 @@
 
                 <executions>
                     <execution>
-                        <id>wsdlit-site-attach-descriptor</id>
+                        <id>site-attach-descriptor</id>
                         <inherited>false</inherited>
                         <goals>
                             <goal>attach-descriptor</goal>
