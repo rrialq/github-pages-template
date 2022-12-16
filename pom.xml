@@ -31,7 +31,8 @@
     <scm>
         <connection>scm:git:git://github.com:rrialq/github-pages-template.git</connection>
         <developerConnection>scm:git:git@github.com:rrialq/github-pages-template.git</developerConnection>
-        <url>https://rrialq.github.io/github-pages-template</url>
+        <url>https://github.com/rrialq/github-pages-template/tree/${project.scm.tag}</url>
+        <tag>main</tag>
     </scm>
 
     <properties>
@@ -218,8 +219,6 @@
                 <configuration>
                     <merge>true</merge>
                     <message>Uploading site for version ${project.version}</message>
-                    <repositoryOwner>rrialq</repositoryOwner>
-                    <repositoryName>github-pages-template</repositoryName>
                     <outputDirectory>${project.build.directory}/gh-pages</outputDirectory>
                 </configuration>
                 <executions>
