@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.coutemeier.github-pages-template</groupId>
+    <artifactId>github-pages-template</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>github-pages-template-core</module>
+    </modules>
+
+    <url>${site.homepage.url}</url>
+
+    <licenses>
+        <license>
+            <name>EUPL-1.2</name>
+            <url>https://spdx.org/licenses/EUPL-1.2.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>rrialq</id>
+            <name>Ramón Rial Quintela</name>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com:rrialq/github-pages-template.git</connection>
+        <developerConnection>scm:git:git@github.com:rrialq/github-pages-template.git</developerConnection>
+        <url>https://rrialq.github.io/github-pages-template</url>
+    </scm>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <site.homepage.url>https://rrialq.github.io/github-pages-template</site.homepage.url>
+    </properties>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>emprego-snapshots</id>
+            <url>https://emprego.xunta.es/nexus/content/repositories/emprego-snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>emprego-releases</id>
+            <url>https://emprego.xunta.es/nexus/content/repositories/emprego-releases</url>
+        </repository>
+        <site>
+            <id>unknown-id</id>
+            <url>https://rrialq.github.io/github-pages-template</url>
+        </site>
+    </distributionManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.gmavenplus</groupId>
+                    <artifactId>gmavenplus-plugin</artifactId>
+                    <version>2.1.0</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.codehaus.groovy</groupId>
+                            <artifactId>groovy-all</artifactId>
+                            <version>3.0.13</version>
+                            <type>pom</type>
+                            <scope>runtime</scope>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-file_versions.js</id>
+                        <inherited>false</inherited>
+                        <phase>pre-site</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.lucapino</groupId>
+                <artifactId>versions-list-maven-plugin</artifactId>
+                <version>2.1.0</version>
+
+                <executions>
+                    <execution>
+                        <id>wsdlit-initialize-versionList</id>
+                        <goals>
+                            <goal>list</goal>
+                        </goals>
+                        <phase>pre-site</phase>
+                        <inherited>true</inherited>
+                        <configuration>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>${project.artifactId}</artifactId>
+                            <includeSnapshots>true</includeSnapshots>
+                            <startingVersion>2.0-SNAPSHOT</startingVersion>
+                            <versionListPropertyName>versionList</versionListPropertyName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>wsdlit-generate-file_versions.js</id>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <inherited>false</inherited>
+                        <phase>pre-site</phase>
+                        <configuration>
+                            <scripts>
+                                <script>${project.basedir}/src/main/script/generateVersionsFile.groovy</script>
+                            </scripts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.12.1</version>
+                <configuration>
+                    <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
+                    <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
+                    <generateReports>true</generateReports>
+                    <relativizeDecorationLinks>true</relativizeDecorationLinks>
+                    <skipDeploy>false</skipDeploy>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.doxia</groupId>
+                        <artifactId>doxia-module-markdown</artifactId>
+                        <version>1.11.1</version>
+                    </dependency>
+                </dependencies>
+
+                <executions>
+                    <execution>
+                        <id>wsdlit-site-attach-descriptor</id>
+                        <inherited>false</inherited>
+                        <goals>
+                            <goal>attach-descriptor</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.12</version>
+                <configuration>
+                    <message>Creating site for ${project.version}</message>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.1.2</version>
+                <inherited>true</inherited>
+                <configuration>
+                    <linkOnly>true</linkOnly>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>distribution-management</report>
+                            <report>index</report>
+                            <report>modules</report>
+                            <report>scm</report>
+                            <report>team</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>

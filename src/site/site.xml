@@ -1,0 +1,48 @@
+<project name="wsdlit"
+         xmlns="http://maven.apache.org/DECORATION/1.8.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 https://maven.apache.org/xsd/decoration-1.8.0.xsd"
+>
+
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.11.1</version>
+    </skin>
+
+    <custom>
+        <fluidoSkin>
+            <navBarStyle>navbar-inverse</navBarStyle>
+            <sideBarEnabled>false</sideBarEnabled>
+            <topBarEnabled>true</topBarEnabled>
+        </fluidoSkin>
+    </custom>
+
+    <publishDate position="right"/>
+    <version position="right" />
+
+    <body>
+        <head>
+            #set ( $moduleRelativePath = '..' )
+            #if ( $project.artifactId != 'github-pages-template' )
+            #set ( $moduleRelativePath = '../..' )
+            #end
+            <![CDATA[
+    <script src="$moduleRelativePath/versions.js"></script>
+    <script>
+    window.onload = generateVersionSelector;
+    </script>
+            ]]>
+        </head>
+        <breadcrumbs>
+            <item name="github-pages-template" href="./index.html"/>
+        </breadcrumbs>
+
+        <menu name="Visión xeral">
+            <item name="Introdución" href="./index.html"/>
+        </menu>
+
+        <menu ref="modules" inherit="bottom" inheritAsRef="true" />
+        <menu ref="reports" inherit="bottom" inheritAsRef="true" />
+    </body>
+</project>
