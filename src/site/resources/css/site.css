@@ -1,0 +1,54 @@
+.brand img {
+    height: 20px;
+}
+
+#label-version {
+    float: left;
+    font-weight: bold;
+    padding: 4px 0;
+    width: 5em;
+}
+
+footer .container .row {
+    float: left;
+}
+
+footer .container .row {
+    float: left;
+    margin-block-end: 0;
+}
+
+footer .container .row > div {
+    padding: 4px 0;
+    text-align: center;
+}
+
+#selectProjectVersion + .versionMenu:active,
+#selectProjectVersion:focus + .versionMenu {
+    visibility: visible;
+}
+
+.versionMenu {
+    visibility: hidden;
+}
+
+.versionMenu > ul {
+    border: 1px solid #767676;
+    border-radius: 2px;
+    list-style: none;
+}
+
+.versionMenu ul li button {
+    background-color: #007bc4;
+    border: 0;
+    color: #fff;
+    line-height: 1.15;
+    margin: 0;
+    padding: 0.2rem 0.8rem;
+    width: 100%;
+}
+
+.versionMenu ul li button:hover {
+    background-color: #00009f;
+    color: #fff;
+}

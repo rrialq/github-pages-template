@@ -40,6 +40,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <site.homepage.url>https://rrialq.github.io/github-pages-template</site.homepage.url>
+        <github.global.server>github</github.global.server>
     </properties>
 
     <distributionManagement>
@@ -101,6 +102,32 @@
                             </resources>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>generate-gh-pages</id>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/gh-pages</outputDirectory>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>${project.reporting.outputDirectory}</directory>
+                                    <filtering>false</filtering>
+                                    <targetPath>${project.version}</targetPath>
+                                </resource>
+                                <resource>
+                                    <directory>${project.build.directory}</directory>
+                                    <filtering>false</filtering>
+                                    <includes>
+                                        <include>index.html</include>
+                                        <include>versions.js</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
 
@@ -126,6 +153,12 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>3.0.0</version>
             </plugin>
 
             <plugin>
@@ -183,10 +216,15 @@
                 <artifactId>site-maven-plugin</artifactId>
                 <version>0.12</version>
                 <configuration>
-                    <message>Creating site for ${project.version}</message>
+                    <merge>true</merge>
+                    <message>Uploading site for version ${project.version}</message>
+                    <repositoryOwner>rrialq</repositoryOwner>
+                    <repositoryName>github-pages-template</repositoryName>
+                    <outputDirectory>${project.build.directory}/gh-pages</outputDirectory>
                 </configuration>
                 <executions>
                     <execution>
+                        <id>gh-pages-deploy</id>
                         <goals>
                             <goal>site</goal>
                         </goals>
