@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.coutemeier.github-pages-template</groupId>
     <artifactId>github-pages-template</artifactId>
-    <version>1.0.0-rc0</version>
+    <version>1.0-SNAPSHOT<version>
     <packaging>pom</packaging>
 
     <modules>
@@ -32,7 +32,7 @@
         <connection>scm:git:ssh://github.com/rrialq/github-pages-template.git</connection>
         <developerConnection>scm:git:ssh://github.com/rrialq/github-pages-template.git</developerConnection>
         <url>https://github.com/rrialq/github-pages-template/tree/${project.scm.tag}</url>
-        <tag>github-pages-template-1.0.0-rc0</tag>
+        <tag>main</tag>
     </scm>
 
     <properties>
