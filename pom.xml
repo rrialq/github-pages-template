@@ -41,17 +41,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <site.homepage.url>https://rrialq.github.io/github-pages-template</site.homepage.url>
-        <github.global.server>github</github.global.server>
     </properties>
 
     <distributionManagement>
-        <snapshotRepository>
-            <id>emprego-snapshots</id>
-            <url>https://emprego.xunta.es/nexus/content/repositories/emprego-snapshots</url>
-        </snapshotRepository>
         <repository>
-            <id>emprego-releases</id>
-            <url>https://emprego.xunta.es/nexus/content/repositories/emprego-releases</url>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/rrialq/github-pages-template</url>
         </repository>
         <site>
             <id>unknown-id</id>
@@ -220,6 +216,7 @@
                     <merge>true</merge>
                     <message>Uploading site for version ${project.version}</message>
                     <outputDirectory>${project.build.directory}/gh-pages</outputDirectory>
+                    <server>github</server>
                 </configuration>
                 <executions>
                     <execution>
