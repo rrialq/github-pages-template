@@ -29,8 +29,8 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/rrialq/github-pages-template.git</connection>
-        <developerConnection>scm:git:git@github.com:rrialq/github-pages-template.git</developerConnection>
+        <connection>scm:git:ssh://github.com/github-pages-template.git</connection>
+        <developerConnection>scm:git:ssh://github.com/github-pages-template.git</developerConnection>
         <url>https://github.com/rrialq/github-pages-template/tree/${project.scm.tag}</url>
         <tag>main</tag>
     </scm>
