@@ -32,7 +32,7 @@
         <connection>scm:git:ssh://git@github.com/rrialq/github-pages-template.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/rrialq/github-pages-template.git</developerConnection>
         <url>https://github.com/rrialq/github-pages-template/tree/${project.scm.tag}</url>
-        <tag>github-pages-template-1.0.0-rc0</tag>
+        <tag>main</tag>
     </scm>
 
     <properties>
