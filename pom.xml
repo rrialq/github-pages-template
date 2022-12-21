@@ -31,7 +31,7 @@
     </developers>
 
     <scm>
-        <connection>scm:git:https://git@github.com/rrialq/github-pages-template.git</connection>
+        <connection>scm:git:https://github.com/rrialq/github-pages-template.git</connection>
         <developerConnection>scm:git:git@github.com:rrialq/github-pages-template.git</developerConnection>
         <url>https://github.com/rrialq/github-pages-template/tree/${project.scm.tag}</url>
         <tag>main</tag>
@@ -81,6 +81,18 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-scm-plugin</artifactId>
                     <version>${plugin.maven-scm-version}</version>
+                    <configuration>
+                        <providerImplementations>
+                            <git>jgit</git>
+                        </providerImplementations>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.maven.scm</groupId>
+                            <artifactId>maven-scm-provider-jgit</artifactId>
+                            <version>${plugin.maven-scm-version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.gmavenplus</groupId>
@@ -150,22 +162,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-scm-plugin</artifactId>
-                <configuration>
-                    <providerImplementations>
-                        <git>jgit</git>
-                    </providerImplementations>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.maven.scm</groupId>
-                        <artifactId>maven-scm-provider-jgit</artifactId>
-                        <version>${plugin.maven-scm-version}</version>
-                    </dependency>
-                </dependencies>
             </plugin>
             <plugin>
                 <groupId>com.github.lucapino</groupId>
