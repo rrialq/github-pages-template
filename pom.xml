@@ -13,7 +13,7 @@
         <module>github-pages-template-core</module>
     </modules>
 
-    <url>${site.homepage.url}</url>
+    <url>https://rrialq.github.io/github-pages-template</url>
 
     <licenses>
         <license>
@@ -118,6 +118,29 @@
                 <version>3.3.0</version>
                 <executions>
                     <execution>
+                        <id>create-gh-pages</id>
+                        <inherited>false</inherited>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/gh-pages</outputDirectory>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>${project.build.directory}/staging</directory>
+                                    <filtering>false</filtering>
+                                    <targetPath>${project.version}</targetPath>
+                                </resource>
+                            </resources>
+
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>copy-file_versions.js</id>
                         <inherited>false</inherited>
                         <phase>pre-site</phase>
@@ -146,7 +169,7 @@
                             <overwrite>true</overwrite>
                             <resources>
                                 <resource>
-                                    <directory>${project.reporting.outputDirectory}</directory>
+                                    <directory>${project.build.directory}/staging</directory>
                                     <filtering>false</filtering>
                                     <targetPath>${project.version}</targetPath>
                                 </resource>
@@ -247,12 +270,14 @@
                 <groupId>com.github.github</groupId>
                 <artifactId>site-maven-plugin</artifactId>
                 <version>0.12</version>
+                <inherited>false</inherited>
                 <configuration>
-                    <merge>true</merge>
+                    <merge>false</merge>
                     <message>Uploading site for version ${project.version}</message>
                     <outputDirectory>${project.build.directory}/gh-pages</outputDirectory>
-                    <server>github</server>
+                    <server>github.com_gh-pages</server>
                 </configuration>
+
                 <executions>
                     <execution>
                         <id>gh-pages-deploy</id>

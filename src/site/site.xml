@@ -25,15 +25,16 @@
         <head>
             #set ( $moduleRelativePath = '..' )
             #if ( $project.artifactId != 'github-pages-template' )
-            #set ( $moduleRelativePath = '../..' )
+            #set ( $moduleRelativePath = $moduleRelativePath + '/..' )
             #end
             <![CDATA[
     <script src="$moduleRelativePath/versions.js"></script>
     <script>
-    window.onload = generateVersionSelector;
+        window.onload = generateVersionSelector;
     </script>
             ]]>
         </head>
+
         <breadcrumbs>
             <item name="github-pages-template" href="./index.html"/>
         </breadcrumbs>
