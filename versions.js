@@ -10,7 +10,7 @@ function generateVersionSelector() {
     const versionMenu = createVersionMenu();
 
     removeChildren( versionElement );
-    versionButton.innerText = "1.0-SNAPSHOT";
+    versionButton.innerText = "${project.version}";
     versionButton.id = "selectProjectVersion";
     versionElement.appendChild( versionButtonLabel );
     versionElement.appendChild( versionButton );
@@ -40,8 +40,6 @@ function createVersionMenu() {
 }
 
 function changeVersion( newVersion ) {
-    var newUrl = window.location.href.replace( "1.0-SNAPSHOT", newVersion );
+    var newUrl = window.location.href.replace( "${project.version}", newVersion );
     window.location.href = newUrl;
 }
-
-const VERSIONS = "".split( "," );
