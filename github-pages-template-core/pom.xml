@@ -6,7 +6,7 @@
     <parent>
         <artifactId>github-pages-template</artifactId>
         <groupId>com.coutemeier.github-pages-template</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-rc4</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
