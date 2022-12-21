@@ -49,11 +49,6 @@
     </properties>
 
     <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/rrialq/github-pages-template</url>
-        </repository>
         <site>
             <id>unknown-id</id>
             <url>https://rrialq.github.io/github-pages-template</url>
