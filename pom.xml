@@ -132,20 +132,13 @@
                                     <directory>src/main/resources</directory>
                                     <filtering>true</filtering>
                                 </resource>
-<!--
-                                <resource>
-                                    <directory>src/main/resources</directory>
-                                    <filtering>true</filtering>
-                                    <targetPath>gh-pages</targetPath>
-                                </resource>
--->
                             </resources>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>copy_file_versions.js</id>
+                        <id>create-gh-pages</id>
                         <inherited>false</inherited>
-                        <phase>site</phase>
+                        <phase>post-site</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
@@ -161,37 +154,14 @@
                                     </includes>
                                     <filtering>false</filtering>
                                 </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-<!--
-                    <execution>
-                        <id>generate-gh-pages</id>
-                        <phase>site</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/gh-pages</outputDirectory>
-                            <overwrite>true</overwrite>
-                            <resources>
                                 <resource>
                                     <directory>${project.build.directory}/staging</directory>
                                     <filtering>false</filtering>
                                     <targetPath>${project.version}</targetPath>
                                 </resource>
-                                <resource>
-                                    <directory>${project.build.directory}</directory>
-                                    <filtering>false</filtering>
-                                    <includes>
-                                        <include>index.html</include>
-                                        <include>versions.js</include>
-                                    </includes>
-                                </resource>
                             </resources>
                         </configuration>
                     </execution>
--->
                 </executions>
             </plugin>
             <plugin>
