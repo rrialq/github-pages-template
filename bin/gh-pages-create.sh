@@ -11,6 +11,8 @@ echo "Borrando directorios 'target/gh-pages', 'target/site' e 'target/staging'"
 [ -d "${SITE_PATH}" ] && rm -Rf "${SITE_PATH}"
 [ -d "${STAGING_PATH}" ] && rm -Rf "${STAGING_PATH}"
 
-echo 'Xerando gh-pages'
+echo 'Xerando target/site'
 mvn site site:stage
+echo ''
+echo 'Xerando target/gh-pages'
 mvn post-site
