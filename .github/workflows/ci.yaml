@@ -60,5 +60,5 @@ jobs:
       - name: Generate site staging
         run: ${PWD}/bin/gh-pages-create.sh
 
-      - name: List files in the repository
+      - name: List files in target/gh-pages
         run: ls -lR ${PWD}/target/gh-pages

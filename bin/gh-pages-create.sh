@@ -15,7 +15,7 @@ echo "Borrando directorios 'target/gh-pages', 'target/site' e 'target/staging'"
 [ -d "${STAGING_PATH}" ] && rm -Rf "${STAGING_PATH}"
 
 echo 'Xerando target/site'
-mvn --batch-mode site site:stage
+mvn --errors --batch-mode --show-version site site:stage
 echo ''
 echo 'Xerando target/gh-pages'
-mvn --batch-mode post-site
+mvn --errors --batch-mode --show-version post-site
