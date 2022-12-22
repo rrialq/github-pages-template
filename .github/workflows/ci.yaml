@@ -61,4 +61,4 @@ jobs:
         run: ${PWD}/bin/gh-pages-create.sh
 
       - name: List files in the repository
-        run: ls ${PWD}
+        run: ls -lR ${PWD}
