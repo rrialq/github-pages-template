@@ -1,20 +1,23 @@
 function generateVersionSelector() {
-    const removeChildren = (parent) => {
-        while ( parent.lastChild ) {
-            parent.removeChild( parent.lastChild );
-        }
-    };
-    const versionElement = document.getElementById( "projectVersion" );
-    const versionButton = document.createElement( "button" );
-    const versionButtonLabel = document.createTextNode( versionElement.innerText.split( ":" ) [0] + ": " );
-    const versionMenu = createVersionMenu();
+    if ( VERSIONS != null && VERSIONS.length > 1 ) {
 
-    removeChildren( versionElement );
-    versionButton.innerText = "${project.version}";
-    versionButton.id = "selectProjectVersion";
-    versionElement.appendChild( versionButtonLabel );
-    versionElement.appendChild( versionButton );
-    versionElement.appendChild( versionMenu );
+        const removeChildren = (parent) => {
+            while ( parent.lastChild ) {
+                parent.removeChild( parent.lastChild );
+            }
+        };
+        const versionElement = document.getElementById( "projectVersion" );
+        const versionButton = document.createElement( "button" );
+        const versionButtonLabel = document.createTextNode( versionElement.innerText.split( ":" ) [0] + ": " );
+        const versionMenu = createVersionMenu();
+
+        removeChildren( versionElement );
+        versionButton.innerText = "${project.version}";
+        versionButton.id = "selectProjectVersion";
+        versionElement.appendChild( versionButtonLabel );
+        versionElement.appendChild( versionButton );
+        versionElement.appendChild( versionMenu );
+    }
 }
 
 function createVersionMenu() {
@@ -36,6 +39,7 @@ function createVersionMenu() {
         li.appendChild( button );
         ul.appendChild( li );
     }
+
     return nav;
 }
 

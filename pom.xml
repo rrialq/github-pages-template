@@ -118,30 +118,7 @@
                 <version>3.3.0</version>
                 <executions>
                     <execution>
-                        <id>create-gh-pages</id>
-                        <inherited>false</inherited>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/gh-pages</outputDirectory>
-                            <overwrite>true</overwrite>
-                            <resources>
-                                <resource>
-                                    <directory>src/main/resources</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>${project.build.directory}/staging</directory>
-                                    <filtering>false</filtering>
-                                    <targetPath>${project.version}</targetPath>
-                                </resource>
-                            </resources>
-
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>copy-file_versions.js</id>
+                        <id>pre-site-start</id>
                         <inherited>false</inherited>
                         <phase>pre-site</phase>
                         <goals>
@@ -155,9 +132,39 @@
                                     <directory>src/main/resources</directory>
                                     <filtering>true</filtering>
                                 </resource>
+<!--
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                    <filtering>true</filtering>
+                                    <targetPath>gh-pages</targetPath>
+                                </resource>
+-->
                             </resources>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>copy_file_versions.js</id>
+                        <inherited>false</inherited>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/gh-pages</outputDirectory>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}</directory>
+                                    <includes>
+                                        <include>index.html</include>
+                                        <include>versions.js</include>
+                                    </includes>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+<!--
                     <execution>
                         <id>generate-gh-pages</id>
                         <phase>site</phase>
@@ -184,6 +191,7 @@
                             </resources>
                         </configuration>
                     </execution>
+-->
                 </executions>
             </plugin>
             <plugin>
