@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MAVEN_OPTS='--batch-mode -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn'
+MAVEN_OPTS='-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn'
 BASEDIR=$( readlink -f "$( dirname "$0" )" )
 TARGET_PATH=$( readlink -f "${BASEDIR}/../target" )
 GH_PAGES_PATH=${TARGET_PATH}/gh-pages
@@ -15,7 +15,7 @@ echo "Borrando directorios 'target/gh-pages', 'target/site' e 'target/staging'"
 [ -d "${STAGING_PATH}" ] && rm -Rf "${STAGING_PATH}"
 
 echo 'Xerando target/site'
-mvn site site:stage
+mvn --batch-mode site site:stage
 echo ''
 echo 'Xerando target/gh-pages'
-mvn post-site
+mvn --batch-mode post-site
