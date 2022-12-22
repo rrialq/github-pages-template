@@ -43,5 +43,3 @@ function changeVersion( newVersion ) {
     var newUrl = window.location.href.replace( "1.0-SNAPSHOT", newVersion );
     window.location.href = newUrl;
 }
-
-const VERSIONS = "".split( "," );
