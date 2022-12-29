@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Prepare Maven local Repository
-        run: bin/prepare-local-repository.sh
+        run: ${PWD}/bin/prepare-local-repo.sh
 
   build:
     # execute on any push or pull request from forked repo
