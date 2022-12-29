@@ -12,6 +12,4 @@ fi
 if [ ! -f ${JAVA_GALICIAN_FILENAME} ]; then
     wget --quiet -O ${JAVA_GALICIAN_FILENAME} https://github.com/javagalician/javagalician-java6/releases/download/javagalician-java6-1.1/javagalician-java6-1.1.jar \
     && mvn install:install-file -Dfile=${JAVA_GALICIAN_FILENAME} -DgroupId=org.javagalician -DartifactId=javagalician-java6 -Dversion=1.1 -Dpackaging=jar
-    echo "$JAVA_HOME"
-    cp ${JAVA_GALICIAN_FILENAME} ${JAVA_HOME}/jre/lib/ext
 fi
