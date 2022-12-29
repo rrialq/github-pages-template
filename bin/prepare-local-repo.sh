@@ -7,8 +7,16 @@ JAVA_GALICIAN_FILENAME="${EXTENSION_LIB_PATH}/javagalician-java6.jar"
 
 if [ ! -d ${EXTENSION_LIB_PATH} ]; then
     mkdir -p ${EXTENSION_LIB_PATH}
+    cp -r ${JAVA_HOME}/jre/lib/ext/* ${EXTENSION_LIB_PATH}
 fi
 
 if [ ! -f ${JAVA_GALICIAN_FILENAME} ]; then
-    wget --quiet -O ${JAVA_GALICIAN_FILENAME} https://github.com/javagalician/javagalician-java6/releases/download/javagalician-java6-1.1/javagalician-java6-1.1.jar
+    wget --quiet -O ${JAVA_GALICIAN_FILENAME} https://github.com/javagalician/javagalician-java6/releases/download/javagalician-java6-1.1/javagalician-java6-1.1.jar \
+    && vp ${JAVA_GALICIAN_FILENAME} ${EXTENSION_LIB_PATH}
 fi
+
+echo -------------
+echo java.ext.dirs
+echo -------------
+
+mvn help:evaluate -Dexpression=java.ext.dirs
