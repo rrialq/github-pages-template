@@ -11,7 +11,7 @@ if [ ! -d ${EXTENSION_LIB_PATH} ]; then
 fi
 
 if [ ! -f ${JAVA_GALICIAN_FILENAME} ]; then
-    sudo wget --quiet -O ${JAVA_GALICIAN_FILENAME} https://github.com/javagalician/javagalician-java6/releases/download/javagalician-java6-1.1/javagalician-java6-1.1.jar \
+    sudo wget --quiet -O ${JAVA_GALICIAN_FILENAME} https://github.com/javagalician/javagalician-java6/releases/download/javagalician-java6-1.1/javagalician-java6-1.1.jar
 fi
 
 echo -------------
