@@ -18,6 +18,9 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
+      - name: List files in target/gh-pages
+        run: ls -lR ${PWD}
+
       - name: Prepare Maven local Repository
         run: ${PWD}/bin/prepare-local-repo.sh
 
