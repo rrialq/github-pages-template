@@ -91,6 +91,9 @@ jobs:
           distribution: 'zulu'
           cache: 'maven'
 
+      - name: Prepare Maven local Repository
+        run: ${PWD}/bin/prepare-local-repo.sh
+
       - name: Generate site staging
         run: ${PWD}/bin/gh-pages-create.sh
 
