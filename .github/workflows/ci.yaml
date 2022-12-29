@@ -9,7 +9,7 @@ jobs:
   pre-build:
     steps:
       - name: Prepare Maven local Repository
-      - run: bin/prepare-local-repository.sh
+        run: bin/prepare-local-repository.sh
 
   build:
     # execute on any push or pull request from forked repo
