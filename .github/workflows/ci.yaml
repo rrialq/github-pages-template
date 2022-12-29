@@ -7,6 +7,16 @@ permissions: {}
 
 jobs:
   pre-build:
+    # execute on any push or pull request from forked repo
+    if: github.event_name == 'push' || ( github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork )
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+      fail-fast: false
+
+    runs-on: ${{ matrix.os }}
+
     steps:
       - name: Prepare Maven local Repository
         run: bin/prepare-local-repository.sh
