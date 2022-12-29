@@ -10,6 +10,5 @@ if [ ! -d ${EXTENSION_LIB_PATH} ]; then
 fi
 
 if [ ! -f ${JAVA_GALICIAN_FILENAME} ]; then
-    wget --quiet -O ${JAVA_GALICIAN_FILENAME} https://github.com/javagalician/javagalician-java6/releases/download/javagalician-java6-1.1/javagalician-java6-1.1.jar \
-    && mvn install:install-file -Dfile=${JAVA_GALICIAN_FILENAME} -DgroupId=org.javagalician -DartifactId=javagalician-java6 -Dversion=1.1 -Dpackaging=jar
+    wget --quiet -O ${JAVA_GALICIAN_FILENAME} https://github.com/javagalician/javagalician-java6/releases/download/javagalician-java6-1.1/javagalician-java6-1.1.jar
 fi
