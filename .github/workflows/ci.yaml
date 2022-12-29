@@ -18,7 +18,11 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - name: List files in target/gh-pages
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - name: List files in ${PWD}
         run: ls -lR ${PWD}
 
       - name: Prepare Maven local Repository
