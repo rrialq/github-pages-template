@@ -46,6 +46,7 @@
 
         <project.scm.id>github.com</project.scm.id>
         <site.homepage.url>https://rrialq.github.io/github-pages-template</site.homepage.url>
+        <locales>gl</locales>
     </properties>
 
     <distributionManagement>
