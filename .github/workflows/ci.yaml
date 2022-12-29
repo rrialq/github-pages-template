@@ -6,40 +6,6 @@ on: [push, pull_request]
 permissions: {}
 
 jobs:
-  pre-build:
-    # execute on any push or pull request from forked repo
-    if: github.event_name == 'push' || ( github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork )
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-      fail-fast: false
-
-    runs-on: ${{ matrix.os }}
-
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          persist-credentials: false
-
-      - name: Set up Maven
-        uses: stCarolas/setup-maven@v4.5
-        with:
-          maven-version: 3.8.6
-
-      - name: Set up Java 8
-        uses: actions/setup-java@v3
-        with:
-          java-version: 8
-          distribution: 'zulu'
-          cache: 'maven'
-
-      - name: List files in ${PWD}
-        run: ls -lR ${PWD}
-
-      - name: Prepare Maven local Repository
-        run: ${PWD}/bin/prepare-local-repo.sh
-
   build:
     # execute on any push or pull request from forked repo
     if: github.event_name == 'push' || ( github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork )
@@ -98,4 +64,4 @@ jobs:
         run: ${PWD}/bin/gh-pages-create.sh
 
       - name: List files in target/gh-pages
-        run: ls -lR ${PWD}/target/gh-pages
+        run: ls -lR ${JAVA_HOME}/jre/lib
