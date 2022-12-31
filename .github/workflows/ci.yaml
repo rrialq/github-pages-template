@@ -26,9 +26,10 @@ jobs:
       - name: Setup Java/Maven
         uses: s4u/setup-maven-action@v1.6.0
         with:
+          cache-prefix: 'cache-'
           java-version: 8
           java-distribution: 'zulu'
-          cache-prefix: 'cache-'
+          maven-version: ${{ matrix.maven }}
 
 #      - name: Set up Maven
 #        uses: stCarolas/setup-maven@v4.5
