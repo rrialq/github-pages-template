@@ -27,7 +27,7 @@ jobs:
         uses: s4u/setup-maven-action@v1.6.0
         with:
           java-version: 8
-          java-distribution: azul
+          java-distribution: 'zulu'
 
 #      - name: Set up Maven
 #        uses: stCarolas/setup-maven@v4.5
