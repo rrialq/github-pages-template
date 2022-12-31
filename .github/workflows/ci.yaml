@@ -34,7 +34,7 @@ jobs:
           distribution: 'zulu'
 
       - name: Cache save/restore
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
@@ -62,7 +62,6 @@ jobs:
         with:
           java-version: 8
           distribution: 'zulu'
-          cache: ${{ runner.os }}-maven-
 
       - name: Prepare Maven local Repository
         run: ${PWD}/bin/prepare-local-repo.sh
