@@ -13,6 +13,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
+        maven: [ '3.8.6', '3.8.7', '4.0.0-M4' ]
       fail-fast: false
 
     runs-on: ${{ matrix.os }}
